@@ -1,0 +1,9 @@
+# 桌面端：Pygame 环境与 UI
+pygame>=2.5.0
+
+# 强化学习训练与推理（agent_*.py / play_DQN.py 等）
+torch>=2.0.0
+numpy>=1.24.0
+
+# 可选：从 PyTorch 权重导出 Web 端 ONNX（snake-web/scripts/export_onnx.py）
+# pip install onnx>=1.14.0

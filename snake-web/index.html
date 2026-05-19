@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snake Game</title>
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+  <div id="app">
+    <div class="canvas-wrap">
+      <canvas id="game-canvas" width="1200" height="600" tabindex="0"></canvas>
+
+      <div id="mobile-controls" class="mobile-controls hidden" aria-hidden="true">
+        <div class="touch-pad touch-pad-p1" aria-label="玩家 1 方向控制">
+          <button type="button" class="touch-btn touch-up" data-touch-player="p1" data-touch-dir="up" aria-label="向上">↑</button>
+          <button type="button" class="touch-btn touch-left" data-touch-player="p1" data-touch-dir="left" aria-label="向左">←</button>
+          <button type="button" class="touch-btn touch-down" data-touch-player="p1" data-touch-dir="down" aria-label="向下">↓</button>
+          <button type="button" class="touch-btn touch-right" data-touch-player="p1" data-touch-dir="right" aria-label="向右">→</button>
+        </div>
+        <div class="touch-pad touch-pad-p2" aria-label="玩家 2 方向控制">
+          <button type="button" class="touch-btn touch-up" data-touch-player="p2" data-touch-dir="up" aria-label="向上">↑</button>
+          <button type="button" class="touch-btn touch-left" data-touch-player="p2" data-touch-dir="left" aria-label="向左">←</button>
+          <button type="button" class="touch-btn touch-down" data-touch-player="p2" data-touch-dir="down" aria-label="向下">↓</button>
+          <button type="button" class="touch-btn touch-right" data-touch-player="p2" data-touch-dir="right" aria-label="向右">→</button>
+        </div>
+      </div>
+
+      <div id="main-menu" class="overlay">
+        <h1 class="menu-title">Snake Game</h1>
+        <div class="menu-buttons">
+          <button type="button" class="menu-btn btn-single" data-mode="single">Single Player</button>
+          <button type="button" class="menu-btn btn-two" data-mode="two">Two Players</button>
+          <button type="button" class="menu-btn btn-vsai" data-mode="vsai">Play vs AI</button>
+          <button type="button" class="menu-btn btn-brawl" data-mode="brawl">AI Brawl</button>
+        </div>
+      </div>
+
+      <div id="algo-menu" class="overlay hidden">
+        <h2 id="algo-menu-title" class="menu-title">Choose AI Algorithm</h2>
+        <p id="algo-menu-sub" class="menu-sub hidden"></p>
+        <div id="algo-grid" class="algo-grid"></div>
+        <button type="button" id="algo-back" class="menu-btn btn-back">Back</button>
+      </div>
+
+      <div id="count-menu" class="overlay hidden">
+        <h2 class="menu-title">AI Brawl — Choose snake count</h2>
+        <div class="menu-buttons menu-buttons-row">
+          <button type="button" class="menu-btn btn-count" data-count="2">Two</button>
+          <button type="button" class="menu-btn btn-count" data-count="3">Three</button>
+          <button type="button" class="menu-btn btn-count" data-count="4">Four</button>
+        </div>
+        <button type="button" id="count-back" class="menu-btn btn-back">Back</button>
+      </div>
+    </div>
+    <p class="hint">方向键 ↑↓←→/WSAD 控制移动，移动端可点击屏幕方向键</p>
+    <p id="load-error" class="load-error hidden"></p>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.17.3/dist/ort.min.js"></script>
+  <script src="js/main.bundle.js"></script>
+</body>
+</html>

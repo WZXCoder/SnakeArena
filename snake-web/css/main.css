@@ -1,0 +1,264 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a2e;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: #eee;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.canvas-wrap {
+  position: relative;
+  max-width: 100%;
+  line-height: 0;
+}
+
+#game-canvas {
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  border: 2px solid #333;
+  background: #fff;
+  cursor: default;
+  outline: none;
+  position: relative;
+  z-index: 1;
+}
+
+#game-canvas:focus {
+  border-color: #ffc800;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.97);
+  z-index: 10;
+  padding: 24px;
+  overflow-y: auto;
+  pointer-events: auto;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.menu-title {
+  color: #ffc800;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+#main-menu .menu-title,
+#algo-menu-title,
+#count-menu .menu-title {
+  position: relative;
+  top: -36px;
+}
+
+.menu-sub {
+  color: #ffc800;
+  font-size: 1.1rem;
+  margin: -16px 0 20px;
+  text-align: center;
+}
+
+#algo-menu-sub {
+  margin-top: 0;
+}
+
+.menu-sub.hidden {
+  display: none;
+}
+
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: min(320px, 90vw);
+}
+
+.menu-buttons-row {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: auto;
+  gap: 16px;
+}
+
+.menu-btn {
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 20px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: filter 0.15s, transform 0.1s;
+}
+
+.menu-btn:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+.menu-btn:active {
+  transform: translateY(0);
+}
+
+.btn-single { background: #1e783c; }
+.btn-two { background: #1e508c; }
+.btn-vsai { background: #78461e; }
+.btn-brawl { background: #5a2878; }
+.btn-back {
+  background: #323232;
+  margin-top: 20px;
+  width: min(140px, 50vw);
+}
+
+.btn-count {
+  width: 120px;
+  background: #5a2878;
+}
+
+.algo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(140px, 1fr));
+  gap: 12px;
+  max-width: 780px;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.algo-grid .menu-btn {
+  font-size: 0.95rem;
+  min-height: 44px;
+  background: #145078;
+}
+
+.hint {
+  font-size: 14px;
+  color: #aaa;
+  text-align: center;
+}
+
+.mobile-controls {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.mobile-controls.hidden {
+  display: none;
+}
+
+.touch-pad {
+  position: absolute;
+  bottom: clamp(10px, 3vw, 28px);
+  left: clamp(10px, 3vw, 28px);
+  display: grid;
+  grid-template-areas:
+    ". up ."
+    "left down right";
+  grid-template-columns: repeat(3, clamp(44px, 10vw, 64px));
+  grid-template-rows: repeat(2, clamp(44px, 10vw, 64px));
+  gap: clamp(6px, 1.4vw, 10px);
+  pointer-events: auto;
+  touch-action: none;
+  user-select: none;
+}
+
+.touch-pad-p2 {
+  display: none;
+  right: clamp(10px, 3vw, 28px);
+  left: auto;
+}
+
+.mobile-controls.two-players .touch-pad-p2 {
+  display: grid;
+}
+
+.touch-btn {
+  border: 2px solid rgba(255, 255, 255, 0.82);
+  border-radius: 16px;
+  background: rgba(20, 24, 36, 0.72);
+  color: #fff;
+  font-size: clamp(1.35rem, 5vw, 2rem);
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.touch-btn:active {
+  background: rgba(255, 200, 0, 0.84);
+  color: #1a1a2e;
+  transform: scale(0.96);
+}
+
+.touch-up { grid-area: up; }
+.touch-left { grid-area: left; }
+.touch-down { grid-area: down; }
+.touch-right { grid-area: right; }
+
+.load-error {
+  color: #ff6b6b;
+  font-size: 14px;
+  max-width: 600px;
+  text-align: center;
+}
+
+.load-error.hidden {
+  display: none;
+}
+
+@media (max-width: 520px) {
+  .algo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mobile-controls {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  body {
+    justify-content: flex-start;
+    padding: 12px 8px;
+  }
+
+  #app {
+    width: 100%;
+  }
+
+  .canvas-wrap {
+    width: 100%;
+  }
+}
