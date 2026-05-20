@@ -53,7 +53,7 @@ export function createLauncherScreen(ctx, keys, onSelect) {
     ctx.font = '86px sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('Snake Game', WIDTH / 2, HEIGHT / 2 - 180);
+    ctx.fillText('Snake Arena', WIDTH / 2, HEIGHT / 2 - 180);
 
     buttons.forEach((b) => b.draw(ctx));
     return null;

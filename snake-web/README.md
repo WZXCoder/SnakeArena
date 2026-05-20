@@ -1,4 +1,4 @@
-# Snake Game（Web 版）
+# Snake Arena（Web 版）
 
 基于原 Pygame 项目的 **网页复刻**版贪吃蛇游戏。
 

@@ -16,7 +16,7 @@ from ui_widgets import Button
 def main() -> None:
     pygame.init()
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("Snake Game")
+    pygame.display.set_caption("Snake Arena")
     clock = pygame.time.Clock()
 
     font_title = pygame.font.SysFont(None, 86)
@@ -74,7 +74,7 @@ def main() -> None:
                 run_ai_brawl_flow(screen)
 
         screen.fill(BG_COLOR)
-        title = font_title.render("Snake Game", True, HUD_TITLE_COLOR)
+        title = font_title.render("Snake Arena", True, HUD_TITLE_COLOR)
         screen.blit(title, title.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 180)))
 
         single_btn.draw(screen)
